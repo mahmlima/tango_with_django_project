@@ -1,0 +1,15 @@
+{% if pages %}
+	<ul>
+	{% for page in pages %}
+		<li><a href="/rango/goto/?page_id={{ page.id }}">{{ page.title }}</a>
+		{% if page.views == 1 %}
+			- ({{ page.views }} view)
+		{% else %}
+			- ({{ page.views }} views)
+		{% endif %}
+		</li>
+	{% endfor %}
+</ul>
+{% else %}
+	<strong>No pages currently in this category.</strong>
+{% endif %}

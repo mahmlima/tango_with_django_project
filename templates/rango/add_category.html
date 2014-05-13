@@ -1,0 +1,29 @@
+{% extends 'rango/base.html' %}
+
+{% block title %}Add Category{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+	<h1>Add a Category</h1>
+	<br />
+	<div class="container">
+		<form class="span6" id="category_form" method="post" action="/rango/add_category/">
+			<!-- Cross-Site Request Forgery (CSRF) token:
+			Helps to protect and secure the HTTP POST action that is initiated on the subsequent submission of a form. The CSRF token is required by the Django framework. If you forget to include a CSRF token in your forms, a user may encounter errors when he or she submits the form. -->
+			{% csrf_token %}
+		    {% for hidden in form.hidden_fields %}
+		        {{ hidden }}
+		    {% endfor %}
+
+		    {% for field in form.visible_fields %}
+		        {{ field.errors }}
+		        {{ field.help_text }}
+		        {{ field }}
+		    {% endfor %}
+			</br>	
+
+			<button class="btn btn-inverse" type="submit" name="submit">Create Category</button>
+		</form>
+	</div>
+</div>
+{% endblock %}

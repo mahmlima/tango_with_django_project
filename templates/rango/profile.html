@@ -1,0 +1,22 @@
+{% extends 'rango/base.html' %}
+
+{% block title %} About {% endblock %}
+
+{% load static %}
+
+{%block body_block %}
+<div class="hero-unit">
+		<h1>Welcome to your profile, {{ user.username }}</h1>
+		<br />
+		Email: {{ user.email }}
+		<br />
+		{% if userprofile %}
+		<p>Website: <a href="{{ userprofile.website }}">{{ userprofile.website }}</a></p>
+		<br />
+
+		{% if userprofile.picture %}
+			<img src="{{ userprofile.picture.url }}" alt="Picture" />
+		{% endif %}
+		{% endif %}
+</div>
+{% endblock %}
